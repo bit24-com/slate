@@ -93,27 +93,66 @@ message Bit24Transaction {
 ```
 
 ### Application Messages
-#### Required Fields by Message Type and Order Type (please refer to the Order_TYPE section for a definition of the ORDER_TYPE enums)
+ 
+#### Message Types:
+ORDER_NEW = 1,
+CANCEL_REPLACE = 2,
+MARGIN_CANCEL_REPLACE = 3,
+MARGIN_EXECUTE = 4,
+ORDER_STATUS = 5,
+ORDER_CANCEL = 6,
+MARGIN_CANCEL = 7,
+EXECUTION = 8,
+EXECUTION_PARTIAL = 9,
+MARGIN_EXECUTION = 10,  // 10
+MARGIN_PARTIAL_EXECUTION = 11,
+REJECT = 12,
+ORDER_REJECT = 13,
+ORDER_ACK = 14,
+CANCELLED = 15,  // 15
+REPLACED = 16,
+QUOTE_FILL = 17,
+QUOTE_FILL_PARTIAL = 18,
+MARGIN_REPLACED = 19,
+CANCEL_REPLACE_REJECT = , // 20
+
+#### Order Types:
+ LMT = 1,
+ MKT = 2,
+ STOP_MKT = 3,
+ STOP_LMT = 4,
+ PEG = 5,
+ HIDDEN = 6,
+ PEG_HIDDEN = 7,
+ OCO = 8,
+ ICE = 9,
+ SNIPER_MKT = 12,
+ SNIPER_LIMIT 13,
+ TSM = 14,               // TRAILING_STOP_MKT
+ TSL = 15                // TRAILING_STOP_LMT 
+
+#### Required Fields by Message Type and Order Type
+
 Message Type:  ORDER_NEW
 
 |   Field Name          |1  |2  |3  |4  |5  |6  |7  |8  |9  |12  |13  |14  |15  |
 | :-------------------: |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|
-| **Msg1**              |   |   |   |   |   |   |   |   |   |    |    |    |    |   
+| **Msg1**              | x | x | x | x | x | x | x | x | x | x  | x  | x  | x  |   
 | **Msg2**              |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **MsgLen**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **MessageType**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **MsgLen**            | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **MessageType**       | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
 | **Padding**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **Account**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **OrderID**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **SymbolEnum**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **OrderType**         |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **SymbolType**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **BOPrice**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **BOSide**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **BOOrderQty**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **TIF**               |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **StopLimitPrice**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **BOSymbol**          |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Account**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrderID**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **SymbolEnum**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrderType**         | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **SymbolType**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOPrice**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOSide**            | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOOrderQty**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TIF**               | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **StopLimitPrice**    |   |   | x |   |   |   |   |   |   |    |    |    |    |
+| **BOSymbol**          | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
 | **OrigOrderID**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **BOCancelShares**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **ExecID**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
@@ -123,22 +162,111 @@ Message Type:  ORDER_NEW
 | **ExpirationDate**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **TraderID**          |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **RejectReason**      |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **SendingTime**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **TradingSessionID**  |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **Key**               |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **DisplaySize**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **RefreshSize**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **SendingTime**       | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TradingSessionID**  | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **Key**               | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **DisplaySize**       | 1 |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RefreshSize**       | 1 |   |   |   |   |   |   |   |   |    |    |    |    |
 | **Layers**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **SizeIncrement**     |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **PriceIncrement**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **PriceOffset**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **BOOrigPrice**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **ExecPrice**         |   |   |   |   |   |   |   |   |   |    |    |    |    |
-| **MsgSeqNum**         |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **MsgSeqNum**         | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
 | **TakeProfitPrice**   |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **TriggerType**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
 | **Attributes**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
 
+Message Type:  CANCEL_REPLACE
+
+|   Field Name          |1  |2  |3  |4  |5  |6  |7  |8  |9  |12  |13  |14  |15  |
+| :-------------------: |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|
+| **Msg1**              | x | x | x | x | x | x | x | x | x | x  | x  | x  | x  |   
+| **Msg2**              |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **MsgLen**            | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **MessageType**       | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **Padding**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Account**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrderID**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **SymbolEnum**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrderType**         | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **SymbolType**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOPrice**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOSide**            | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOOrderQty**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TIF**               | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **StopLimitPrice**    |   |   | x |   |   |   |   |   |   |    |    |    |    |
+| **BOSymbol**          | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrigOrderID**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **BOCancelShares**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecID**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecShares**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RemainingQuantity** |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecFee**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExpirationDate**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **TraderID**          |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RejectReason**      |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **SendingTime**       | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TradingSessionID**  | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **Key**               | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **DisplaySize**       | 1 |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RefreshSize**       | 1 |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Layers**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **SizeIncrement**     |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **PriceIncrement**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **PriceOffset**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **BOOrigPrice**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecPrice**         |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **MsgSeqNum**         | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TakeProfitPrice**   |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **TriggerType**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Attributes**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
+
+Message Type:  ORDER_CANCEL
+
+|   Field Name          |1  |2  |3  |4  |5  |6  |7  |8  |9  |12  |13  |14  |15  |
+| :-------------------: |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|
+| **Msg1**              | x | x | x | x | x | x | x | x | x | x  | x  | x  | x  |   
+| **Msg2**              |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **MsgLen**            | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **MessageType**       | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **Padding**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Account**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrderID**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **SymbolEnum**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrderType**         | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **SymbolType**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOPrice**           | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOSide**            | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **BOOrderQty**        | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TIF**               | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **StopLimitPrice**    |   |   | x |   |   |   |   |   |   |    |    |    |    |
+| **BOSymbol**          | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **OrigOrderID**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **BOCancelShares**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecID**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecShares**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RemainingQuantity** |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecFee**           |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExpirationDate**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **TraderID**          |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RejectReason**      |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **SendingTime**       | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TradingSessionID**  | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **Key**               | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **DisplaySize**       | 1 |   |   |   |   |   |   |   |   |    |    |    |    |
+| **RefreshSize**       | 1 |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Layers**            |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **SizeIncrement**     |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **PriceIncrement**    |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **PriceOffset**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **BOOrigPrice**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **ExecPrice**         |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **MsgSeqNum**         | x | x | x | x | x | x | x | x | x |  x |  x |  x | x  |
+| **TakeProfitPrice**   |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **TriggerType**       |   |   |   |   |   |   |   |   |   |    |    |    |    |
+| **Attributes**        |   |   |   |   |   |   |   |   |   |    |    |    |    |
 #### LIMIT
 
 ##### New LIMIT order - Client Sending
