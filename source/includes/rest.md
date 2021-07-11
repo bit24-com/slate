@@ -1,26 +1,13 @@
 # REST
 
 ## REST Overview
-
-Overview
+   All REST user messages are POST type requests.  Server responses are in JSON responses.  Please review the section titled "Required Fields by Message Type and Order Type" for the required order entry message fields.
 
 ## REST BOClientLogon
 
 ### BOClientLogon -- Client Sending
 
-```json
-{
-  "msg1": "H",
-  "LogonType": 1,
-  "Account": 100700,
-  "UserName": "BOU7",
-  "TradingSessionID": 506,
-  "SendingTime": 18343447,
-  "MsgSeqID": 110434,
-  "Key": 123456,
-  "RiskMaster": "N"
-}
-```
+`POST http://bo.market.com msg1=H&LogonType=1&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
 
 > AES response
 
@@ -31,6 +18,10 @@ Overview
   "Account": 100700,
   "UserName": "BOU7",
   "TradingSessionID": 506,
+  "PrimaryOESIP":"192.181.35.6:32060",
+  "SecondaryOESIP":"192.182.35.6:32060",
+  "PrimaryMDIP":"192.181.35.5:32060",
+  "SecondaryMDIP":"192.181.35.5:32060",
   "SendingTime": 1624785162815971526,
   "MsgSeqID": 110434,
   "Key": 123456,
@@ -61,8 +52,8 @@ Overview
 1. The BOClientLogon message must be sent to the AES in order to initiate the logon process \(please contact BO Representative for IP address and port\).
 2. Please refer to the BOClientLogon with logon status and if logon was successful the IP Address and Port of the OES \(Order Entry Server\).
 3. The AES will respond with a BOClientLogon with logon status and if logon was successful the IP Address and Port of the OES \(Order Entry Server\).
-4. Only one login session is permited for a unique account ID and UserName.
-5. Black Ocean requests that if they user is going to close the connection a BOClientLogon message should be sent with the LogonType set to 2 prior to closing the connection in order to allow the OES to close the connection gracefully.
+4. If the logon to the AES was successful the user may log into the OES or MDS using the IP address and port provided in the AES response
+5. Only one login session is permited for a unique account ID and UserName.
 6. BOClientLogon Example Message - Client Sending
 
 | Field Name           | Data Type | Data Length | Required Field | Required Value | Example Value |   Notes   |
@@ -94,38 +85,7 @@ Overview
 
 ## REST Collateral Data
 
-```json
-{
-  "msg1": "f",
-  "UpdateType": 2,
-  "Account": 100700,
-  "TradingSessionID": 506,
-  "SymbolEnum": 4,
-  "Key": 123456,
-  "MsgSeqID": 500,
-  "SendingTime": 1624821404362542113
-}
-```
-
-> AES response
-
-```json
-{
-  "msg1": "h",
-  "MessageType": 31,
-  "UserName": "BOU7",
-  "Account": 100700,
-  "SymbolEnum": 11021,
-  "BTCEquity": 100.0,
-  "USDTEquity": 10000000.0,
-  "FLYEquity": 50000000.0,
-  "USDEquity": 10000000.0,
-  "ETHEquity": 2000.0,
-  "TradingSessionID": 506,
-  "LastSeqNum": 20101010,
-  "SendingTime": 1624821404365664367
-}
-```
+POST HTTP: msg1=f&UpdateType=1&Account=100700&SymbolEnum=4&TradingSessionID=506&SendingTime=1681931839281&MsgSeqID=500&Key=123456
 
 > OES response
 
@@ -164,22 +124,9 @@ Overview
 
 ##### HTTP Request
 
-`POST http://bo.market.com msg1=H&LogonType=2&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
+`POST http://bo.market.com msg1=w&MessageType=w&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
 
 ## REST Risk Symbol Update
-
-```json
-{
-  "msg1": "w",
-  "MessageType": "w",
-  "Account": 100700,
-  "SymbolEnum": 4,
-  "TradingSessionID": 506,
-  "Key": 123456,
-  "MsgSeqID": 500,
-  "SendingTime": 1624821406361022055
-}
-```
 
 > The above command returns JSON structured like this:
 
@@ -226,24 +173,9 @@ Overview
 
 ##### HTTP Request
 
-`POST http://bo.market.com msg1=H&LogonType=2&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
+`POST http://bo.market.com msg1=Y&MessageType=22&Account=100700&SymbolName=BTCUSDT&SymbolEnum=4&UserName=BOU7&TradingSessionID=506&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
 
 ## REST Instrument Data
-
-```json
-{
-  "msg1": "Y",
-  "MessageType": 22,
-  "Account": 100700,
-  "SymbolName": "BTCUSD",
-  "UserName": "BOU7",
-  "SymbolEnum": 4,
-  "TradingSessionID": 506,
-  "Key": 123456,
-  "MsgSeqID": 500,
-  "SendingTime": 1624859180169634284
-}
-```
 
 > The above command returns JSON structured like this:
 
@@ -254,7 +186,7 @@ Overview
   "SymbolName": "USDUSDT",
   "SymbolEnum": 4,
   "SymbolType": 1,
-  "PriceIncrement": 0.01,
+  "PriceIncrement": 0.50,
   "MaxSize": 5000.0,
   "MinSize": 0.00001,
   "SendingTime": 1624863069122199720,
@@ -311,31 +243,9 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
 
 ##### HTTP Request
 
-`POST http://bo.market.com msg1=H&LogonType=2&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
+`POST http://bo.market.com msg1=T&MessageType=1&UpdateType=0&Account=100700&TraderID=BOU7&OrderType&OrderID=14333181&Price=35040.5&Bit24OrderQty=2&Bit24Side=1&SendingTime=1681931839281&MsgSeqID=500&SymbolEnum=4&Symbol=BTCUSDT&TradingSessionID=506&TIF=1`
 
 ## REST Order Entry
-
-```json
-{
-  "msg1": "T",
-  "MessageType": 1,
-  "UpdateType": 2,
-  "Account": 100700,
-  "TraderID": "BOU7",
-  "OrderType": 1,
-  "OrderID": 14333181,
-  "Price,": 35040.5,
-  "Bit24OrderQty": 2,
-  "Bit24Side": 1,
-  "SendingTime": 1681931839281,
-  "MsgSeqID": 500,
-  "Key": 123456,
-  "SymbolEnum": 4,
-  "Symbol": "BTCUSDT",
-  "TradingSessionID": 506,
-  "TIF": 1
-}
-```
 
 > The above command returns JSON structured like this:
 
@@ -362,9 +272,3 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "MsgSeqID": 500
 }
 ```
-
-##### HTTP Request
-
-`POST http://bo.market.com msg1=H&LogonType=2&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
-
-### Application Messages

@@ -1,8 +1,7 @@
 # Binary
 
 ## Binary Overview
-
-Overview
+   Binary messages send data in its native format.  Binary messages are more compact and faster to process since the data does not need to be converted from a string to the native format and because the offset of desired fields are known and can be accessed using an offset to find the desired field.  
 
 ### Messaging Overview
 
@@ -43,8 +42,6 @@ Application messages contain the data necessary to perform the operations indica
    12. BOCollateralRequest
    13. BOCollateralUpdate
 
-## Binary Websockets
-
 ### Session Management
 
 #### BOClientLogon -- Client Sending
@@ -80,15 +77,6 @@ Application messages contain the data necessary to perform the operations indica
   "RiskMaster": "N"
 }
 ```
-
-This endpoint retrieves all kittens.
-
-##### HTTP Request
-
-`POST http://bo.market.com msg1=H&LogonType=2&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
-
-##### Query Parameters
-
 DESCRIPTION
 
 | Field Name       | Data Type | Required | Notes |
