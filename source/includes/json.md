@@ -2,7 +2,68 @@
 
 ## JSON Overview
 
-Overview
+All JSON messages sent by the client are preceeded by a HEADER message which has the length of the JSON message which follows it. Example, {"Len":179}{"msg1":"H".........}. The allows the server to determine the length of the message which follows the header allowing for more efficient parsing. The Server responses do not include the header.
+
+JSON messages are identical in TCP/IP and in Websockets. The sending of the messages is the same and the receiving of messages is the same therefore the descriptions of the following messages will work the same for TCP/IP and for Websockets.
+
+JSON Order Entry messages will vary according to the message type and the order type. Use the tables below to determine the required fields based on message type and order type to build the correct JSON Order Entry string.
+
+### Current Order Types:
+
+1.  LMT = 1,
+2.  MKT = 2,
+3.  STOP_MKT = 3,
+4.  STOP_LMT = 4,
+5.  PEG = 5,
+6.  HIDDEN = 6,
+7.  PEG_HIDDEN = 7,
+8.  OCO = 8,
+9.  ICE = 9,
+10. SNIPER_MKT = 12,
+11. SNIPER_LIMIT 13,
+12. TSM = 14, // TRAILING_STOP_MKT
+13. TSL = 15 // TRAILING_STOP_LMT
+
+### Message Types
+
+1.           ORDER_NEW = 1,
+2.           CANCEL_REPLACE = 2,
+3.           MARGIN_CANCEL_REPLACE = 3,
+4.           MARGIN_EXECUTE = 4,
+5.           ORDER_STATUS = 5,
+6.           ORDER_CANCEL = 6,
+7.           MARGIN_CANCEL = 7,
+8.           EXECUTION = 8,
+9.           EXECUTION_PARTIAL = 9,
+10.         MARGIN_EXECUTION = 10,
+11.         MARGIN_PARTIAL_EXECUTION = 11,
+12.         REJECT = 12,
+13.         ORDER_REJECT = 13,
+14.         ORDER_ACK = 14,
+15.         CANCELLED = 15,
+16.         REPLACED = 16,
+17.         QUOTE_FILL = 17,
+18.         QUOTE_FILL_PARTIAL = 18,
+19.         MARGIN_REPLACED = 19,
+20.         CANCEL_REPLACE_REJECT = ,
+21.         INSTRUMENT = 21,
+22.         INSTRUMENT_REQUEST = 22,
+23.         RISK_REJECT = 23,
+24.         TOB_MSG = 24,
+25.         THREE_LAYER_MD_MSG = 25,
+26.         FIVE_LAYER_MD_MSG = 26,
+27.         TEN_LAYER_MD_MSG = 27,
+28.         TWENTY_LAYER_MD_MSG = 28,
+29.         THIRTY_LAYER_MD_MSG = 29,
+30.         EXEC_REPORT = 30,
+31.         COLLATERAL_DATA = 31,
+32.         COLLATERAL_UPDATE_REQ = 32,
+33.         RISK_USER_SYMBOL = 33,
+34.         RISK_UPDATE_REQUEST = 34,
+35.         OPEN_ORDER_REQUEST = 35,
+36.         CLIENT_LOGON = 36,
+37.         MD_SNAPSHOT = 37,
+38.         MD_SUBSCRIBE = 38,
 
 ## JSON BOClientLogon
 
