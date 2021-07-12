@@ -496,7 +496,7 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
 
 ##### HTTP Request
 
-`POST http://bo.market.com msg1=T&MessageType=1&UpdateType=0&Account=100700&TraderID=BOU7&OrderType&OrderID=14333181&Price=35040.5&Bit24OrderQty=2&Bit24Side=1&SendingTime=1681931839281&MsgSeqID=500&SymbolEnum=4&Symbol=BTCUSDT&TradingSessionID=506&TIF=1`
+`POST http://bo.market.com msg1=T&MessageType=1&UpdateType=0&Account=100700&TraderID=BOU7&OrderType&OrderID=14333181&Price=35040.5&BOOrderQty=2&BOSide=1&SendingTime=1681931839281&MsgSeqID=500&SymbolEnum=4&Symbol=BTCUSDT&TradingSessionID=506&TIF=1`
 
 ## REST Order Entry
 
@@ -511,13 +511,13 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "OrderId": 14333181,
   "SymbolEnum": 4,
   "OrderType": 1,
-  "Bit24Price": 35040.5,
+  "BOPrice": 35040.5,
   "Side": 1,
-  "Bit24OrderQty": 2.0,
+  "BOOrderQty": 2.0,
   "TIF": 1,
   "DisplaySize": 0.0,
   "RefreshSize": 0.0,
-  "Bit24Symbol": "BTCUSDT",
+  "BOSymbol": "BTCUSDT",
   "TraderID": "BOU7",
   "SendingTime": 1624781419248402,
   "TradingSessionID": 506,

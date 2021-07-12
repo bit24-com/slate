@@ -3,7 +3,7 @@
 
 ```proto
 
-   Bit24Msg::Bit24Transaction _t;
+   BOMsg::BOTransaction _t;
       _t.set_messagetype(FIX::N_BIT10::MESSAGE_TYPE::ORDER_NEW);
       _t.set_symbolenum(4);
       _t.set_account(100700);
@@ -14,8 +14,8 @@
       _t.set_side(1);
       _t.set_tif(2);
       _t.set_key(123456);
-      _t.set_bit24price(price);
-      _t.set_bit24orderqty(0.25);
+      _t.set_boprice(price);
+      _t.set_boorderqty(0.25);
       _t.set_sendingtime(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::time_point_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now()).time_since_epoch()).count());
       _t.set_msgseqid(500);
       int siz = _t.ByteSizeLong() + 8;
@@ -35,26 +35,26 @@
 
 ```proto
 
-Bit24Msg::Bit24Transaction _tp;
+BOMsg::BOTransaction _tp;
 
 _tp.ParseFromCodedStream(&coded_input);
 _tp.attribute();
 _tp.ordertype();
 _tp.orderid();
 _tp.tradingsessionid();
-_tp.bit24price();
-_tp.bit24originalprice();
+_tp.boprice();
+_tp.booriginalprice();
 _tp.origorderid();
 _tp.side();
-_tp.bit24orderqty();
+_tp.boorderqty();
 _tp.tif();
 _tp.traderid();
 _tp.account();
 _tp.symbolenum();
-_tp.bit24symbol();
+_tp.bosymbol();
 _tp.sendingtime();
 _tp.msgseqid();
-_tp.bit24cancelshares();
+_tp.bocancelshares();
 _tp.displaysize();
 _tp.refreshsize();
 _tp.sizeincrement();
@@ -70,7 +70,7 @@ _tp.tif();
 ```
 
 ```proto
-message Bit24Transaction {
+message BOTransaction {
   string msg1 = 1;
   string msg2 = 2;
   int32 MessageType = 3;
@@ -80,14 +80,14 @@ message Bit24Transaction {
   int32 SymbolEnum = 7;
   int32 OrderType = 8;
   int32 SymbolType = 9;
-  double Bit24Price = 10;
+  double BOPrice = 10;
   int32 Side = 11;
-  double Bit24OrderQty = 12;
+  double BOOrderQty = 12;
   int32 TIF = 13;
   double StopLimitPrice = 14;
-  string Bit24Symbol = 15;
+  string BOSymbol = 15;
   int64 OrigOrderId = 16;
-  double Bit24CancelShares = 17;
+  double BOCancelShares = 17;
   int64 ExecID = 18;
   double ExecShares = 19;
   double RemainingQty = 20;
@@ -104,7 +104,7 @@ message Bit24Transaction {
   double SizeIncrement = 31;
   double PriceIncrement = 32;
   double PriceOffset = 33;
-  double Bit24OriginalPrice = 34;
+  double BOOriginalPrice = 34;
   double ExecPrice = 35;
   int64 MsgSeqID = 36;
   double TakeProfitPrice = 37;

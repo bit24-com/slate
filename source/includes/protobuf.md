@@ -339,7 +339,7 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 ```
 
 ```proto
-message Bit24ClientLogon {
+message BOClientLogon {
   string msg1 = 1;
   string msg2 = 2;
   int32 MsgLen = 3;
@@ -454,7 +454,7 @@ Collateral data is the equity maintained by the user. In order to find out the c
 ```
 
 ```proto
-message Bit24CollateralData {
+message BOCollateralData {
   string msg1 = 1;
   string msg2 = 2;
   int32 MessageType = 3;
@@ -537,7 +537,7 @@ The BORiskUpdateRequest is very similar to the CollateralData request except it 
   char msgtype = (char)stype;
 
 
-  Bit24Msg::Bit24RiskUserSymbol _res;
+  BOMsg::BORiskUserSymbol _res;
   _res.ParseFromCodedStream(&coded_input);               // this must be done to fill in the message fields
   _res.account();
   _res.symbolenum();
@@ -562,7 +562,7 @@ The BORiskUpdateRequest is very similar to the CollateralData request except it 
 ```
 
 ```proto
-message Bit24RiskUserSymbol {
+message BORiskUserSymbol {
   string msg1 = 1;
   string msg2 = 2;
   int32 MessageType = 3;
@@ -662,7 +662,7 @@ Symbol enums for each instrument must be correct. Invalid symbol enums can resul
 ```
 
 ```proto
-message Bit24InstrumentRequest {
+message BOInstrumentRequest {
   string msg1 = 1;
   string msg2 = 2;
   int32 MsgLen = 3;
