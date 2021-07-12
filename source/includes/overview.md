@@ -15,7 +15,7 @@ Welcome to Black Ocean. Black Ocean offers a diverse array of connection protoco
 3.  Google Protobuf's
 4.  Black Ocean's Proprietary Binary Protocol
 
-## Messages-Delivery Protocol Differences
+## Msg-Delivery Protocol Differences
 
 Once the data has been extracted from the socket buffer, the messages themselves have no differences. JSON over TCP/IP is the same as JSON over websockets. The only protocol with a real difference is REST but fortunately, there is only one delivery mechanism for it. Therefore since every user has their own way of reading data from the socket buffer, we will not delve into that area. Instead, this document is intended to explain how to parse the data which was received irregardless of the delivery mechanism be it TCP/IP or Websockets.
 
