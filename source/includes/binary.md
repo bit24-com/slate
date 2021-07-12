@@ -24,15 +24,15 @@ Binary messages are identical in TCP/IP and in Websockets. The sending of the me
 
 ### Message Types
 
-1.            ORDER_NEW = 1,
-2.            CANCEL_REPLACE = 2,
-3.            MARGIN_CANCEL_REPLACE = 3,
-4.            MARGIN_EXECUTE = 4,
-5.            ORDER_STATUS = 5,
-6.            ORDER_CANCEL = 6,
-7.            MARGIN_CANCEL = 7,
-8.            EXECUTION = 8,
-9.            EXECUTION_PARTIAL = 9,
+1.              ORDER_NEW = 1,
+2.              CANCEL_REPLACE = 2,
+3.              MARGIN_CANCEL_REPLACE = 3,
+4.              MARGIN_EXECUTE = 4,
+5.              ORDER_STATUS = 5,
+6.              ORDER_CANCEL = 6,
+7.              MARGIN_CANCEL = 7,
+8.              EXECUTION = 8,
+9.              EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -108,43 +108,7 @@ Application messages contain the data necessary to perform the operations indica
 
 #### BOClientLogon -- Client Sending
 
-```json
-{
-  "msg1": "H",
-  "LogonType": 1,
-  "Account": 100700,
-  "UserName": "BOU7",
-  "TradingSessionID": 506,
-  "SendingTime": 18343447,
-  "MsgSeqID": 110434,
-  "Key": 123456,
-  "RiskMaster": "N"
-}
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "msg1": "H",
-  "LogonType": 1,
-  "Account": 100700,
-  "UserName": "BOU7",
-  "TradingSessionID": 506,
-  "SendingTime": 1624785162815971526,
-  "MsgSeqID": 110434,
-  "Key": 123456,
-  "LoginStatus": 1,
-  "RejectReason": 50,
-  "RiskMaster": "N"
-}
-```
-
 This endpoint retrieves all kittens.
-
-##### HTTP Request
-
-`POST http://bo.market.com msg1=H&LogonType=2&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
 
 ##### Query Parameters
 

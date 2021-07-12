@@ -18,7 +18,6 @@ includes:
   - protobuf
   - protobuf_order_entry
   - binary
-  - binary_tcp_ip
   - reject_code
 
 search: true
