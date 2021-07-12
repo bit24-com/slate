@@ -84,6 +84,7 @@
 4. Sending times are in nanoseconds from the epoch, January 1, 1970.
 
 ## REST Collateral Data
+   Collateral data message will show the total value of BTC available.
 
 POST HTTP: msg1=f&UpdateType=1&Account=100700&SymbolEnum=4&TradingSessionID=506&SendingTime=1681931839281&MsgSeqID=500&Key=123456
 
@@ -127,6 +128,7 @@ POST HTTP: msg1=f&UpdateType=1&Account=100700&SymbolEnum=4&TradingSessionID=506&
 `POST http://bo.market.com msg1=w&MessageType=w&Account=100700&UserName=BOU7&SendingTime=1681931839281&MsgSeqID=500&Key=123456`
 
 ## REST Risk Symbol Update
+   The BORiskUpdateRequest is very similar to the CollateralData request except it is isolated to the values of equity being used in a particular instrument.  Example, the user might be trading BTCUSD and BTCUSDT.  While the Collateral data message will show the total value of BTC available, the RiskUserSymbol message will show the value of BTC being used for an individual instrument.  In this example if 5 BTC were being used in BTCUSD and 2 BTC were being used in BTCUSDT the collateral data message would show a total of 7 BTC currently in use.  But if the user requested an update for a particular symbol such as BTCUSD, the value of equity shown to being used would be 5.  This message also shows values related to a particular instrument such as executed positions, etc.
 
 > The above command returns JSON structured like this:
 

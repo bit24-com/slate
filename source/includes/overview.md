@@ -8,12 +8,12 @@
    1)  REST
    2)  JSON
    3)  Google Protobuf's
-   4)  Black Ocean Proprietary Binary Protocol
+   4)  Black Ocean's Proprietary Binary Protocol
 ## Difference between messages through the various delivery protocols
    Once the data has been extracted from the socket buffer, the messages themselves have no differences.  JSON over TCP/IP is the same as JSON over websockets.  The only protocol with a real difference is REST but fortunately, there is only one delivery mechanism for it.  Therefore since every user has their own way of reading data from the socket buffer, we will not delve into that area.  Instead, this document is intended to explain how to parse the data which was received irregardless of the delivery mechanism be it TCP/IP or Websockets.
 
 ## Message Headers
-   Most messages in the Black Ocean messaging protocols have a header preceeding the message.  Message Headers help the server to know how much data to process and not even try to process the data until a full message is received and to know which message to create without peeking into the message to find the message type.  The different message headers will be explained in the appropriate Messaging Protocol Sections.  In each messaging protocol, the encapsulation of the message type will be different but for reference sake we will list them here:
+   Most messages in the Black Ocean messaging protocols have a header preceeding the message.  Message headers increase throughput by preventing the processing of data until a full message is received.  The message headers also clearly define the message type received which adds efficiency in the processing of incoming data.  The different message headers will be explained in the appropriate Messaging Protocol Sections.  In Black Oceans messaging protocols, there are two ways to identify the message received, one from the afore mentioned header and the other is from the message itself.  The message types in the header are listed below:
 ### Char message types
         BOClientLogon = 'H'
         BORiskUpdateRequest = 'w'
@@ -98,7 +98,8 @@ Symbol Enums are replacements for the character based instrument name to a short
         MD_SUBSCRIBE = 38,
 
 ## Required Fields by Message Type and Order Type
-     The numerals in the Field Name row indicate the order type listed above.  The names in the Field Name column are the names of the fields in the BOTransaction message.  An x in the row corresponding to the order type means that field is required for that order type and message type.  Example, Field Name: StopLimitPrice is required in the STOP_MKT order type (3) as indicated in the intersection of the Field Name column, StopLimitPrice and row header: 3.
+     The numerals in the Field Name row indicate the order type listed above.  To find out if a particular field is required find the field name in the left hand column and then find the numerical value corresponding to the order type listed in the preceeding section.
+       Example:  To determine if the StopLimit price must be included in an OCO order, find the numerical value of the OCO order type in the section above (8) and then find StopLimitPrice in the left hand column and then go to the right to the header value of 8.  In this case, yes, StopLimitPrice is required when sending the message ORDER_NEW with the ORDER_TYPE = OCO (8).
 
 Message Type:  ORDER_NEW
 

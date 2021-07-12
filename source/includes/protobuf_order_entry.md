@@ -169,7 +169,7 @@ message Bit24Transaction {
 
 ### Required Fields by Message Type and Order Type
      The numerals in the Field Name row indicate the order type listed above.  To find out if a particular field is required find the field name in the left hand column and then find the numerical value corresponding to the order type listed in the preceeding section.
-       Example:  To determine if the StopLimit price must be included in an OCO order, find the numerical value of the OCO order type in the section above (8) and then find StopLimitPrice in the left hand column and then go to the right to the header value of 8.  In this case, yes, StopLimitPrice is required when sending the message ORDER_NEW with the ORDER_TYPE = OCO (8).
+       Example:  To determine if the StopLimit price must be included in an OCO order, find the numerical value of the OCO order type in the section above (the value is 8) and then find StopLimitPrice in the left hand column and then go to the right to the header value of 8.  In this case, yes, StopLimitPrice is required when sending the message ORDER_NEW with the ORDER_TYPE = OCO (8).
 
 Message Type:  ORDER_NEW
 
