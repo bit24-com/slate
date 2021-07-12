@@ -24,15 +24,15 @@ Binary messages are identical in TCP/IP and in Websockets. The sending of the me
 
 ### Message Types
 
-1.              ORDER_NEW = 1,
-2.              CANCEL_REPLACE = 2,
-3.              MARGIN_CANCEL_REPLACE = 3,
-4.              MARGIN_EXECUTE = 4,
-5.              ORDER_STATUS = 5,
-6.              ORDER_CANCEL = 6,
-7.              MARGIN_CANCEL = 7,
-8.              EXECUTION = 8,
-9.              EXECUTION_PARTIAL = 9,
+1.               ORDER_NEW = 1,
+2.               CANCEL_REPLACE = 2,
+3.               MARGIN_CANCEL_REPLACE = 3,
+4.               MARGIN_EXECUTE = 4,
+5.               ORDER_STATUS = 5,
+6.               ORDER_CANCEL = 6,
+7.               MARGIN_CANCEL = 7,
+8.               EXECUTION = 8,
+9.               EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -102,9 +102,7 @@ Application messages contain the data necessary to perform the operations indica
    12. BOCollateralRequest
    13. BOCollateralUpdate
 
-## Binary Websockets
-
-### Session Management
+## Session Management
 
 #### BOClientLogon -- Client Sending
 
@@ -161,7 +159,7 @@ DESCRIPTION
 6. If the login was rejected, the reject reason will be in the ﬁeld RejectReason
 7. Not currently used, for future expansion.
 
-### Application Messages
+## Application Messages
 
 #### BOTransaction
 
