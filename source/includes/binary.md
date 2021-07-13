@@ -108,7 +108,7 @@ Application messages contain the data necessary to perform the operations indica
 
 ##### Query Parameters
 
-DESCRIPTION
+
 
 | Field Name       | Data Type | Required | Notes |
 | ---------------- | --------- | -------- | ----- |
@@ -123,7 +123,7 @@ DESCRIPTION
 
 #### BOClientLogon/Logout -- Server Response
 
-DESCRIPTION
+
 
 | Field Name       | Data Type    | Data Length | Buffer Offset | Required Field | Required Value | Example Value     | Notes    |
 | ---------------- | ------------ | ----------- | ------------- | -------------- | -------------- | ----------------- | -------- |
