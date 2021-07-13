@@ -106,8 +106,6 @@ Application messages contain the data necessary to perform the operations indica
 
 #### BOClientLogon -- Client Sending
 
-This endpoint retrieves all kittens.
-
 ##### Query Parameters
 
 DESCRIPTION
