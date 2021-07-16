@@ -376,6 +376,80 @@ Symbol Enums are replacements for the character based instrument name to a short
 | S_TRANSACTION           |        238         |
 | S_TRANSACTBUF           |        330         |
 
+### FieldList
+
+|          Field          |         Type       |
+| ----------------------- | ------------------ |
+| AccountEquity           |       double       |
+| Attributes              |       char[]       |
+| BTCEquity               |       double       |
+| BOCancelShares          |       double       |
+| BOOrderQty              |       double       |
+| BOOrigPrice             |       double       |
+| BOPrice                 |       double       |
+| BOSide                  |        short       |
+| BOSymbol                |       char[]       |
+| DisplaySize             |       double       |
+| ETHEquity               |       double       |
+| ExecID                  |         long       |
+| ExecPrice               |       double       |
+| ExecShares              |       double       |
+| ExecutedLongCash        |       double       |
+| ExecutedLongPosition    |       double       |
+| ExecutedShortCash       |       double       |
+| ExecutedShortPosition   |       double       |
+| ExpirationDate          |       char[]       |
+| FLYEquity               |       double       |
+| InstrumentEquity        |       double       |
+| Key                     |          int       |
+| LastSeqNum              |          int       |
+| Layers                  |        short       |
+| Leverage                |       double       |
+| LimitCross              |       double       |
+| LoginStatus             |        short       |
+| LogonType               |        short       |
+| LongCash                |       double       |
+| LongPosition            |       double       |
+| MaxSize                 |       double       |
+| MessageType             |        short       |
+| MinSize                 |       double       |
+| MsgSeqID                |         long       |
+| OpenOrderRequestLimit   |          int       |
+| OrderID                 |         long       |
+| OrderType               |        short       |
+| OrigOrderID             |         long       |
+| PriceIncrement          |       double       |
+| PriceOffset             |       double       |
+| PrimaryMarketDataIP     |       char[]       |
+| RefreshSize             |       double       |
+| RejectReason            |        short       |
+| RemainingQuantity       |       double       |
+| RequestType             |        short       |
+| ResponseType            |        short       |
+| RiskMaster              |         char       |
+| SecondaryOrderEntryIP   |       char[]       |
+| SendTime                |     uint64_t       |
+| SendingTime             |     uint64_t       |
+| SeqNum                  |          int       |
+| ShortCash               |       double       |
+| ShortPosition           |       double       |
+| SizeIncrement           |       double       |
+| StopLimitPrice          |       double       |
+| SymbolDisabled          |         char       |
+| SymbolEnum              |        short       |
+| SymbolName              |       char[]       |
+| SymbolType              |         char       |
+| TIF                     |        short       |
+| TakeProfitPrice         |       double       |
+| TraderID                |       char[]       |
+| TradingSessionID        |          int       |
+| TriggerType             |        short       |
+| TwoFA                   |       char[]       |
+| USDEquity               |       double       |
+| USDTEquity              |       double       |
+| UpdateType              |        short       |
+| UserName                |       char[]       |
+
 ## Order Types
 
 Black Ocean offers the most complete set of order types in the crypto market including TRUE ICE orders. ICE orders allow the user to place up to 10 orders at a specified price offset per layer and a specified size at that price layer which move as the market moves. Black Ocean also offers Hidden orders, peg orders, hidden peg orders and display and refresh attributes for most order types. The complete list of order types is as follows:
