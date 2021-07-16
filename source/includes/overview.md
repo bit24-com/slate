@@ -162,7 +162,7 @@ Symbol Enums are replacements for the character based instrument name to a short
 | DAY                    |                    |
 
 
-### SIDE
+### BOSide
 
 |          Field         |     Value(short)   |
 | ---------------------- | ------------------ |
