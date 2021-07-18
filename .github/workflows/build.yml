@@ -17,4 +17,4 @@ jobs:
           username: ${{ secrets.USERNAME_DEV }}
           key: ${{ secrets.SSH_KEY_DEV }}
           script: |
-            bash /home/ubuntu/deploy.sh
+            bash /home/ubuntu/deploy-slate.sh
