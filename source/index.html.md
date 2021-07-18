@@ -19,8 +19,6 @@ includes:
   - protobuf_order_entry
   - binary
   - reject_code
-  - market_data_overview
-  - market_data
 
 search: true
 

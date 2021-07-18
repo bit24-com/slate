@@ -1,0 +1,15 @@
+{
+  "apps" : [
+     {
+        "name"          : "Black Ocean Slate",
+        "script"        : "run.sh",
+        "watch"         : false,
+        "cwd"           : "/home/ubuntu/slate/",
+        "out_file"      : "/home/ubuntu/slate/hooker.out.log",
+        "err_file"      : "/home/ubuntu/slate/hooker.err.log",
+        "merge_logs"    : true,
+        "instances"     : 1,
+        "exec_mode"     : "cluster"
+     }
+  ]
+}
