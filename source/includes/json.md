@@ -2,7 +2,29 @@
 
 ## JSON Overview
 
-All JSON messages sent by the client are preceeded by a HEADER message which has the length of the JSON message which follows it. Example, {"Len":179}{"msg1":"H".........}. The allows the server to determine the length of the message which follows the header allowing for more efficient parsing. The Server responses do not include the header.
+All JSON messages sent by the client are preceeded by a HEADER message which has the length of the JSON message which follows it. Example,
+
+```json
+{
+  "Len":179
+}
+```
+
+```json
+{
+  "msg1": "H",
+  "LogonType": 1,
+  "Account": 100700,
+  "UserName": "BOU7",
+  "TradingSessionID": 506,
+  "SendingTime": 18343447,
+  "MsgSeqID": 110434,
+  "Key": 123456,
+  "RiskMaster": "N"
+}
+```
+
+The allows the server to determine the length of the message which follows the header allowing for more efficient parsing. The Server responses do not include the header.
 
 JSON messages are identical in TCP/IP and in Websockets. The sending of the messages is the same and the receiving of messages is the same therefore the descriptions of the following messages will work the same for TCP/IP and for Websockets.
 
@@ -26,15 +48,15 @@ JSON Order Entry messages will vary according to the message type and the order 
 
 ### Message Types
 
-1.           ORDER_NEW = 1,
-2.           CANCEL_REPLACE = 2,
-3.           MARGIN_CANCEL_REPLACE = 3,
-4.           MARGIN_EXECUTE = 4,
-5.           ORDER_STATUS = 5,
-6.           ORDER_CANCEL = 6,
-7.           MARGIN_CANCEL = 7,
-8.           EXECUTION = 8,
-9.           EXECUTION_PARTIAL = 9,
+1.          ORDER_NEW = 1,
+2.          CANCEL_REPLACE = 2,
+3.          MARGIN_CANCEL_REPLACE = 3,
+4.          MARGIN_EXECUTE = 4,
+5.          ORDER_STATUS = 5,
+6.          ORDER_CANCEL = 6,
+7.          MARGIN_CANCEL = 7,
+8.          EXECUTION = 8,
+9.          EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -76,9 +98,11 @@ JSON Order Entry messages will vary according to the message type and the order 
   "Account": 100700,
   "UserName": "BOU7",
   "TradingSessionID": 506,
-  "SendingTime": 18343447,
+  "SendingTime": 1624785162815971526,
   "MsgSeqID": 110434,
   "Key": 123456,
+  "LoginStatus": 1,
+  "RejectReason": 50,
   "RiskMaster": "N"
 }
 ```
@@ -157,6 +181,12 @@ JSON Order Entry messages will vary according to the message type and the order 
 
 ```json
 {
+  "Len": 144
+}
+```
+
+```json
+{
   "msg1": "f",
   "UpdateType": 2,
   "Account": 100700,
@@ -177,11 +207,11 @@ JSON Order Entry messages will vary according to the message type and the order 
   "UserName": "BOU7",
   "Account": 100700,
   "SymbolEnum": 11021,
-  "BTCEquity": 100.0,
-  "USDTEquity": 10000000.0,
-  "FLYEquity": 50000000.0,
-  "USDEquity": 10000000.0,
-  "ETHEquity": 2000.0,
+  "BTCEquity": 100.000000,
+  "USDTEquity": 10000000.000000,
+  "FLYEquity": 50000000.000000,
+  "USDEquity": 10000000.000000,
+  "ETHEquity": 2000.000000,
   "TradingSessionID": 506,
   "LastSeqNum": 20101010,
   "SendingTime": 1624821404365664367
@@ -227,6 +257,12 @@ JSON Order Entry messages will vary according to the message type and the order 
 
 ```json
 {
+  "Len": 147
+}
+```
+
+```json
+{
   "msg1": "w",
   "MessageType": "w",
   "Account": 100700,
@@ -244,22 +280,22 @@ JSON Order Entry messages will vary according to the message type and the order 
 {
   "MessageType": "N",
   "Account": 100700,
-  "SymbolEnum": 1,
-  "Leverage": 25.0,
-  "LongPosition": 0.0,
-  "ShortPostion": 0.0,
-  "LongCash": 0.0,
-  "ShortCash": 0.0,
+  "SymbolEnum": 1, 
+  "Leverage": 25.000000,
+  "LongPosition": 0.000000,
+  "ShortPostion": 0.000000,
+  "LongCash": 0.000000,
+  "ShortCash": 0.000000,
   "TradingDisabled": 0,
-  "ExecLongCash": 0.0,
-  "ExecLongPositon": 0.0,
-  "ExecShortCash": 0.0,
-  "ExecShortPosition": 0.0,
-  "BTCEquity": 100.0,
-  "USDTEquity": 10000000.0,
-  "ETHEquity": 0.0,
-  "USDEquity": 10000000.0,
-  "FLYEquity": 0.0,
+  "ExecLongCash": 0.000000,
+  "ExecLongPositon": 0.000000,
+  "ExecShortCash": 0.000000,
+  "ExecShortPosition": 0.000000,
+  "BTCEquity": 100.000000,
+  "USDTEquity": 10000000.000000,
+  "ETHEquity": 0.000000,
+  "USDEquity": 10000000.000000,
+  "FLYEquity": 0.000000,
   "TradingSessionID": 506,
   "LastSeqNum": 200,
   "UpdateType": 2
@@ -282,6 +318,11 @@ JSON Order Entry messages will vary according to the message type and the order 
 |                      |           | TotalLength |                |                |               |        |
 
 ## JSON Instrument Data
+```json
+{
+  "Len": 186
+}
+```
 
 ```json
 {
@@ -307,9 +348,9 @@ JSON Order Entry messages will vary according to the message type and the order 
   "SymbolName": "USDUSDT",
   "SymbolEnum": 4,
   "SymbolType": 1,
-  "PriceIncrement": 0.01,
-  "MaxSize": 5000.0,
-  "MinSize": 0.00001,
+  "PriceIncrement": 0.010000,
+  "MaxSize": 5000.000000,
+  "MinSize": 0.000010,
   "SendingTime": 1624863069122199720,
   "LastSeqNum": 505
 }
@@ -362,7 +403,64 @@ Note 5: Symbol Enum is a short integer with the following possible values:
 Note 6: Sending times are in nanoseconds from the epoch, January 1, 1970
 Note 7: If the request was rejected, the reject reason will be in the ﬁeld RejectReason, see section below for possible values
 
+## JSON Open Order
+
+```json
+{
+  "Len": 186
+}
+```
+
+```json
+{
+  "msg1": "e",
+  "MessageType": 35,
+  "Account": 100700,
+  "SymbolName": "BTCUSD",
+  "UserName": "BOU7",
+  "SymbolEnum": 4,
+  "TradingSessionID": 506,
+  "Key": 123456,
+  "MsgSeqID": 500,
+  "SendingTime": 1624864277304478770
+}
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "msg1": "T",
+  "MessageType": 1,
+  "UpdateType": 2,
+  "Account": 100700,
+  "OrderId": 2004,
+  "SymbolEnum": 4,
+  "OrderType": 1,
+  "Bit24Price": 34998.000000,
+  "Side": 1,
+  "Bit24OrderQty": 2.000000,
+  "TIF": 1,
+  "DisplaySize": 0.000000,
+  "RefreshSize": 0.000000,
+  "Bit24Symbol": "BTCUSDT",
+  "TraderID": "BOU7",
+  "SendingTime": 1624866772603605,
+  "TradingSessionID": 506,
+  "Key": 123456,
+  "MsgSeqID": 500
+}
+
+```
+
 ## JSON Order Entry
+
+```json
+{
+  "Len": 298
+}
+```
 
 ```json
 {
@@ -372,10 +470,10 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "Account": 100700,
   "TraderID": "BOU7",
   "OrderType": 1,
-  "OrderID": 14333181,
-  "Price,": 35040.5,
-  "BOOrderQty": 2,
-  "BOSide": 1,
+  "OrderID": 14333181&Bit24,
+  "Price," :35040.5,
+  "Bit24OrderQty": 2,
+  "Bit24Side": 1,
   "SendingTime": 1681931839281,
   "MsgSeqID": 500,
   "Key": 123456,
@@ -397,13 +495,13 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "OrderId": 14333181,
   "SymbolEnum": 4,
   "OrderType": 1,
-  "BOPrice": 35040.5,
+  "Bit24Price": 35040.500000,
   "Side": 1,
-  "BOOrderQty": 2.0,
+  "Bit24OrderQty": 2.000000,
   "TIF": 1,
-  "DisplaySize": 0.0,
-  "RefreshSize": 0.0,
-  "BOSymbol": "BTCUSDT",
+  "DisplaySize": 0.000000,
+  "RefreshSize": 0.000000,
+  "Bit24Symbol": "BTCUSDT",
   "TraderID": "BOU7",
   "SendingTime": 1624781419248402,
   "TradingSessionID": 506,
