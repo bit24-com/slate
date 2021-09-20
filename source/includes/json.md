@@ -6,7 +6,7 @@ All JSON messages sent by the client are preceeded by a HEADER message which has
 
 ```json
 {
-  "Len":179
+  "Len": 179
 }
 ```
 
@@ -48,15 +48,15 @@ JSON Order Entry messages will vary according to the message type and the order 
 
 ### Message Types
 
-1.          ORDER_NEW = 1,
-2.          CANCEL_REPLACE = 2,
-3.          MARGIN_CANCEL_REPLACE = 3,
-4.          MARGIN_EXECUTE = 4,
-5.          ORDER_STATUS = 5,
-6.          ORDER_CANCEL = 6,
-7.          MARGIN_CANCEL = 7,
-8.          EXECUTION = 8,
-9.          EXECUTION_PARTIAL = 9,
+1.           ORDER_NEW = 1,
+2.           CANCEL_REPLACE = 2,
+3.           MARGIN_CANCEL_REPLACE = 3,
+4.           MARGIN_EXECUTE = 4,
+5.           ORDER_STATUS = 5,
+6.           ORDER_CANCEL = 6,
+7.           MARGIN_CANCEL = 7,
+8.           EXECUTION = 8,
+9.           EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -147,7 +147,7 @@ JSON Order Entry messages will vary according to the message type and the order 
 2. Please refer to the BOClientLogon with logon status and if logon was successful the IP Address and Port of the OES \(Order Entry Server\).
 3. The AES will respond with a BOClientLogon with logon status and if logon was successful the IP Address and Port of the OES \(Order Entry Server\).
 4. Only one login session is permited for a unique account ID and UserName.
-5. Black Ocean requests that if they user is going to close the connection a BOClientLogon message should be sent with the LogonType set to 2 prior to closing the connection in order to allow the OES to close the connection gracefully.
+5. BO requests that if they user is going to close the connection a BOClientLogon message should be sent with the LogonType set to 2 prior to closing the connection in order to allow the OES to close the connection gracefully.
 6. BOClientLogon Example Message - Client Sending
 
 | Field Name           | Data Type | Data Length | Required Field | Required Value | Example Value |   Notes   |
@@ -173,7 +173,7 @@ JSON Order Entry messages will vary according to the message type and the order 
 
 1. LogonType is a short enum, values: `Login 1`, `Logout 2`
    - If the value is not one of the values above, a logout message will be sent and the connection closed.
-2. Value assigned by Black Ocean. If this is a logout, the TradingSessionID must be supplied.
+2. Value assigned by BO. If this is a logout, the TradingSessionID must be supplied.
 3. IP address and port of the OES will be sent in the server response BOClientLogon message.
 4. Sending times are in nanoseconds from the epoch, January 1, 1970.
 
@@ -207,11 +207,11 @@ JSON Order Entry messages will vary according to the message type and the order 
   "UserName": "BOU7",
   "Account": 100700,
   "SymbolEnum": 11021,
-  "BTCEquity": 100.000000,
-  "USDTEquity": 10000000.000000,
-  "FLYEquity": 50000000.000000,
-  "USDEquity": 10000000.000000,
-  "ETHEquity": 2000.000000,
+  "BTCEquity": 100.0,
+  "USDTEquity": 10000000.0,
+  "FLYEquity": 50000000.0,
+  "USDEquity": 10000000.0,
+  "ETHEquity": 2000.0,
   "TradingSessionID": 506,
   "LastSeqNum": 20101010,
   "SendingTime": 1624821404365664367
@@ -280,22 +280,22 @@ JSON Order Entry messages will vary according to the message type and the order 
 {
   "MessageType": "N",
   "Account": 100700,
-  "SymbolEnum": 1, 
-  "Leverage": 25.000000,
-  "LongPosition": 0.000000,
-  "ShortPostion": 0.000000,
-  "LongCash": 0.000000,
-  "ShortCash": 0.000000,
+  "SymbolEnum": 1,
+  "Leverage": 25.0,
+  "LongPosition": 0.0,
+  "ShortPostion": 0.0,
+  "LongCash": 0.0,
+  "ShortCash": 0.0,
   "TradingDisabled": 0,
-  "ExecLongCash": 0.000000,
-  "ExecLongPositon": 0.000000,
-  "ExecShortCash": 0.000000,
-  "ExecShortPosition": 0.000000,
-  "BTCEquity": 100.000000,
-  "USDTEquity": 10000000.000000,
-  "ETHEquity": 0.000000,
-  "USDEquity": 10000000.000000,
-  "FLYEquity": 0.000000,
+  "ExecLongCash": 0.0,
+  "ExecLongPositon": 0.0,
+  "ExecShortCash": 0.0,
+  "ExecShortPosition": 0.0,
+  "BTCEquity": 100.0,
+  "USDTEquity": 10000000.0,
+  "ETHEquity": 0.0,
+  "USDEquity": 10000000.0,
+  "FLYEquity": 0.0,
   "TradingSessionID": 506,
   "LastSeqNum": 200,
   "UpdateType": 2
@@ -318,6 +318,7 @@ JSON Order Entry messages will vary according to the message type and the order 
 |                      |           | TotalLength |                |                |               |        |
 
 ## JSON Instrument Data
+
 ```json
 {
   "Len": 186
@@ -348,9 +349,9 @@ JSON Order Entry messages will vary according to the message type and the order 
   "SymbolName": "USDUSDT",
   "SymbolEnum": 4,
   "SymbolType": 1,
-  "PriceIncrement": 0.010000,
-  "MaxSize": 5000.000000,
-  "MinSize": 0.000010,
+  "PriceIncrement": 0.01,
+  "MaxSize": 5000.0,
+  "MinSize": 0.00001,
   "SendingTime": 1624863069122199720,
   "LastSeqNum": 505
 }
@@ -374,7 +375,7 @@ JSON Order Entry messages will vary according to the message type and the order 
 | **MsgSeqNum**        |    Int    |      4      |       X        |                |    1500201    |          |
 |                      |           | TotalLength |                |                |               |          |
 
-Note 1: TradingSessionID, UserName and Account number supplied by Black Ocean to the user.
+Note 1: TradingSessionID, UserName and Account number supplied by BO to the user.
 Note 2: RequestType is an enum with the following values:
 
 | Enum Name       | Enum Value(short int) |                         |
@@ -424,7 +425,6 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "MsgSeqID": 500,
   "SendingTime": 1624864277304478770
 }
-
 ```
 
 > The above command returns JSON structured like this:
@@ -438,12 +438,12 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "OrderId": 2004,
   "SymbolEnum": 4,
   "OrderType": 1,
-  "Bit24Price": 34998.000000,
+  "Bit24Price": 34998.0,
   "Side": 1,
-  "Bit24OrderQty": 2.000000,
+  "Bit24OrderQty": 2.0,
   "TIF": 1,
-  "DisplaySize": 0.000000,
-  "RefreshSize": 0.000000,
+  "DisplaySize": 0.0,
+  "RefreshSize": 0.0,
   "Bit24Symbol": "BTCUSDT",
   "TraderID": "BOU7",
   "SendingTime": 1624866772603605,
@@ -451,7 +451,6 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "Key": 123456,
   "MsgSeqID": 500
 }
-
 ```
 
 ## JSON Order Entry
@@ -495,12 +494,12 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
   "OrderId": 14333181,
   "SymbolEnum": 4,
   "OrderType": 1,
-  "Bit24Price": 35040.500000,
+  "Bit24Price": 35040.5,
   "Side": 1,
-  "Bit24OrderQty": 2.000000,
+  "Bit24OrderQty": 2.0,
   "TIF": 1,
-  "DisplaySize": 0.000000,
-  "RefreshSize": 0.000000,
+  "DisplaySize": 0.0,
+  "RefreshSize": 0.0,
   "Bit24Symbol": "BTCUSDT",
   "TraderID": "BOU7",
   "SendingTime": 1624781419248402,

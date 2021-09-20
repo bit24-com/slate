@@ -22,15 +22,15 @@ All REST user messages are POST type requests. Server responses are in JSON resp
 
 ## Message Types
 
-1.          ORDER_NEW = 1,
-2.          CANCEL_REPLACE = 2,
-3.          MARGIN_CANCEL_REPLACE = 3,
-4.          MARGIN_EXECUTE = 4,
-5.          ORDER_STATUS = 5,
-6.          ORDER_CANCEL = 6,
-7.          MARGIN_CANCEL = 7,
-8.          EXECUTION = 8,
-9.          EXECUTION_PARTIAL = 9,
+1.           ORDER_NEW = 1,
+2.           CANCEL_REPLACE = 2,
+3.           MARGIN_CANCEL_REPLACE = 3,
+4.           MARGIN_EXECUTE = 4,
+5.           ORDER_STATUS = 5,
+6.           ORDER_CANCEL = 6,
+7.           MARGIN_CANCEL = 7,
+8.           EXECUTION = 8,
+9.           EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -115,15 +115,15 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
          ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -177,15 +177,15 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
          ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -239,15 +239,15 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
          ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -328,7 +328,7 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
 1. LogonType is a short enum, values: `Login 1`, `Logout 2`
    - If the value is not one of the values above, a logout message will be sent and the connection closed.
-2. Value assigned by Black Ocean. If this is a logout, the TradingSessionID must be supplied.
+2. Value assigned by BO. If this is a logout, the TradingSessionID must be supplied.
 3. IP address and port of the OES will be sent in the server response BOClientLogon message.
 4. Sending times are in nanoseconds from the epoch, January 1, 1970.
 
@@ -465,7 +465,7 @@ The BORiskUpdateRequest is very similar to the CollateralData request except it 
 | **MsgSeqNum**        |    Int    |      4      |       X        |                |    1500201    |          |
 |                      |           | TotalLength |                |                |               |          |
 
-Note 1: TradingSessionID, UserName and Account number supplied by Black Ocean to the user.
+Note 1: TradingSessionID, UserName and Account number supplied by BO to the user.
 Note 2: RequestType is an enum with the following values:
 
 | Enum Name       | Enum Value(short int) |                         |

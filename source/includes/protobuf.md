@@ -40,15 +40,15 @@ As can be seen from the code, we don't even try to process the message if it is 
 
 ## Message Types
 
-1.          ORDER_NEW = 1,
-2.          CANCEL_REPLACE = 2,
-3.          MARGIN_CANCEL_REPLACE = 3,
-4.          MARGIN_EXECUTE = 4,
-5.          ORDER_STATUS = 5,
-6.          ORDER_CANCEL = 6,
-7.          MARGIN_CANCEL = 7,
-8.          EXECUTION = 8,
-9.          EXECUTION_PARTIAL = 9,
+1.           ORDER_NEW = 1,
+2.           CANCEL_REPLACE = 2,
+3.           MARGIN_CANCEL_REPLACE = 3,
+4.           MARGIN_EXECUTE = 4,
+5.           ORDER_STATUS = 5,
+6.           ORDER_CANCEL = 6,
+7.           MARGIN_CANCEL = 7,
+8.           EXECUTION = 8,
+9.           EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -133,15 +133,15 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
          ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -195,15 +195,15 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
          ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -257,15 +257,15 @@ Note 1: Attributes currently are used to indicate Hidden or Display Refresh is t
 
          ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -364,7 +364,7 @@ message BOClientLogon {
 2. The AES will respond with a BOClientLogon with logon status and if logon was successful the IP Address and Port of the OES and MDS \(Order Entry Server and Level Based Market Data Server\).
 3. After a successful logon to the AES the user will proceed to log into the OES and/or MDS using the IP and port information provided in the AES Response to the login. Upon successful login to either or both of the OES and/or MDS the user may enter orders or subscribe to market data.
 4. Only one login session is permited for a unique account ID and UserName.
-5. Black Ocean requests that if they user is going to close the connection a BOClientLogon message should be sent with the LogonType set to 2 prior to closing the connection in order to allow the OES to close the connection gracefully.
+5. BO requests that if they user is going to close the connection a BOClientLogon message should be sent with the LogonType set to 2 prior to closing the connection in order to allow the OES to close the connection gracefully.
 6. BOClientLogon Example Message - Client Sending
 
 | Field Name           | Data Type  | Required Field | Required Value |   Example Value   |   Notes   |
@@ -390,7 +390,7 @@ message BOClientLogon {
 
 1. LogonType is an integer enum, values: Login = 1, Logout = 2
    - If the value is not one of the values above, a logout message will be sent and the connection closed.
-2. Value assigned by Black Ocean. If this is a logout, the TradingSessionID must be supplied.
+2. Value assigned by BO. If this is a logout, the TradingSessionID must be supplied.
 3. IP address and port of the OES and MDS will be sent in the server response BOClientLogon message.
 4. Sending times are in nanoseconds from the epoch, January 1, 1970.
 
@@ -698,7 +698,7 @@ message BOInstrumentRequest {
 | **MsgSeqNum**        |    Int    |      4      |       X        |                |    1500201    |          |
 |                      |           | TotalLength |                |                |               |          |
 
-Note 1: TradingSessionID, UserName and Account number supplied by Black Ocean to the user.
+Note 1: TradingSessionID, UserName and Account number supplied by BO to the user.
 Note 2: RequestType is an enum with the following values:
 
 | Enum Name       | Enum Value(string int) |                         |
@@ -745,15 +745,15 @@ Note 7: If the request was rejected, the reject reason will be in the ﬁeld Rej
 
 # Message Types
 
-1.          ORDER_NEW = 1,
-2.          CANCEL_REPLACE = 2,
-3.          MARGIN_CANCEL_REPLACE = 3,
-4.          MARGIN_EXECUTE = 4,
-5.          ORDER_STATUS = 5,
-6.          ORDER_CANCEL = 6,
-7.          MARGIN_CANCEL = 7,
-8.          EXECUTION = 8,
-9.          EXECUTION_PARTIAL = 9,
+1.           ORDER_NEW = 1,
+2.           CANCEL_REPLACE = 2,
+3.           MARGIN_CANCEL_REPLACE = 3,
+4.           MARGIN_EXECUTE = 4,
+5.           ORDER_STATUS = 5,
+6.           ORDER_CANCEL = 6,
+7.           MARGIN_CANCEL = 7,
+8.           EXECUTION = 8,
+9.           EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -837,15 +837,15 @@ Message Type: ORDER_NEW
 Note 1: Attributes currently are used to indicate Hidden or Display Refresh is to be used. Currently only HIDDEN_TYPE and DISPLY_TYPE are in use.
 ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -898,15 +898,15 @@ Message Type: CANCEL_REPLACE
 Note 1: Attributes currently are used to indicate Hidden or Display Refresh is to be used. Currently only HIDDEN_TYPE and DISPLY_TYPE are in use.
 ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,
@@ -959,15 +959,15 @@ Message Type: ORDER_CANCEL
 Note 1: Attributes currently are used to indicate Hidden or Display Refresh is to be used. Currently only HIDDEN_TYPE and DISPLY_TYPE are in use.
 ATTRIBUTE_TYPES:
 
-1.              RESERVED_TYPE,
-2.              HIDDEN_TYPE = 1,
-3.              DISPLY_TYPE = 2,
-4.              SIZEINCREMENT_TYPE = 3,
-5.              POST_TYPE = 4,
-6.              PRICEINCREMENT_TYPE = 5,
-7.              OFFSET_TYPE = 6,
-8.              STOP_MKT_TYPE = 7,
-9.              STOP_LMT_TYPE = 8,
+1.               RESERVED_TYPE,
+2.               HIDDEN_TYPE = 1,
+3.               DISPLY_TYPE = 2,
+4.               SIZEINCREMENT_TYPE = 3,
+5.               POST_TYPE = 4,
+6.               PRICEINCREMENT_TYPE = 5,
+7.               OFFSET_TYPE = 6,
+8.               STOP_MKT_TYPE = 7,
+9.               STOP_LMT_TYPE = 8,
 10.            PEG_TYPE = 9,
 11.            TSL_TYPE = 10,
 12.            TSM_TYPE = 11,

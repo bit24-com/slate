@@ -24,15 +24,15 @@ Binary messages are identical in TCP/IP and in Websockets. The sending of the me
 
 ### Message Types
 
-1.               ORDER_NEW = 1,
-2.               CANCEL_REPLACE = 2,
-3.               MARGIN_CANCEL_REPLACE = 3,
-4.               MARGIN_EXECUTE = 4,
-5.               ORDER_STATUS = 5,
-6.               ORDER_CANCEL = 6,
-7.               MARGIN_CANCEL = 7,
-8.               EXECUTION = 8,
-9.               EXECUTION_PARTIAL = 9,
+1.                ORDER_NEW = 1,
+2.                CANCEL_REPLACE = 2,
+3.                MARGIN_CANCEL_REPLACE = 3,
+4.                MARGIN_EXECUTE = 4,
+5.                ORDER_STATUS = 5,
+6.                ORDER_CANCEL = 6,
+7.                MARGIN_CANCEL = 7,
+8.                EXECUTION = 8,
+9.                EXECUTION_PARTIAL = 9,
 10.         MARGIN_EXECUTION = 10,
 11.         MARGIN_PARTIAL_EXECUTION = 11,
 12.         REJECT = 12,
@@ -108,8 +108,6 @@ Application messages contain the data necessary to perform the operations indica
 
 ##### Query Parameters
 
-
-
 | Field Name       | Data Type | Required | Notes |
 | ---------------- | --------- | -------- | ----- |
 | Msg1             | char      | X        |
@@ -122,8 +120,6 @@ Application messages contain the data necessary to perform the operations indica
 | Key              | Int       | X        |
 
 #### BOClientLogon/Logout -- Server Response
-
-
 
 | Field Name       | Data Type    | Data Length | Buffer Offset | Required Field | Required Value | Example Value     | Notes    |
 | ---------------- | ------------ | ----------- | ------------- | -------------- | -------------- | ----------------- | -------- |
@@ -250,11 +246,11 @@ All BOTransaction messages are validated to ensure the required ﬁelds based on
 
 ##### Risk Checking
 
-Black Ocean performs both pre-trade and post trade risk checking as well as constant risk checks for those order types which require it.
+BO performs both pre-trade and post trade risk checking as well as constant risk checks for those order types which require it.
 
 ##### ICE Orders
 
-Ice orders are intended to allow the user to place up to a maximum of 10 orders on the book at a predeﬁned size and a predeﬁned price oﬀset from the top of the book \(currently 10 layers but this may be increased in a future release\). Ice orders maintain a relationship to the top of the book based on the PriceOﬀset ﬁeld. Example, if the PriceOﬀset = 0.0, then at least one layer of the orders will be equal to the top of book price and the second layer will be above/below that order based on the price oﬀset value and so on according to the number of layers. As the top of book prices move away from the orders, a new order will be placed on the book according to the PriceOﬀset and an order at the bottom of the layer will be removed. As the price moves closer to the ﬁrst layer, the orders hold their positions in anticipation of being executed. As orders are moved, the server does not send cancel replace messages to identify the new layer of the ICE orders \(this would defeat the purpose of Black Ocean performing this for the user since the goal is to reduce both network traffic, programming complexity for the user and time delays in cancel/cancel replacing orders in the layers\). The order quantity ﬁeld BOOrderQty must be equal to the product of the Layers ﬁeld and the SizeIncrement ﬁeld.
+Ice orders are intended to allow the user to place up to a maximum of 10 orders on the book at a predeﬁned size and a predeﬁned price oﬀset from the top of the book \(currently 10 layers but this may be increased in a future release\). Ice orders maintain a relationship to the top of the book based on the PriceOﬀset ﬁeld. Example, if the PriceOﬀset = 0.0, then at least one layer of the orders will be equal to the top of book price and the second layer will be above/below that order based on the price oﬀset value and so on according to the number of layers. As the top of book prices move away from the orders, a new order will be placed on the book according to the PriceOﬀset and an order at the bottom of the layer will be removed. As the price moves closer to the ﬁrst layer, the orders hold their positions in anticipation of being executed. As orders are moved, the server does not send cancel replace messages to identify the new layer of the ICE orders \(this would defeat the purpose of BO performing this for the user since the goal is to reduce both network traffic, programming complexity for the user and time delays in cancel/cancel replacing orders in the layers\). The order quantity ﬁeld BOOrderQty must be equal to the product of the Layers ﬁeld and the SizeIncrement ﬁeld.
 
 **Example:**
 
